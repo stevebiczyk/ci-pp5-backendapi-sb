@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import re
 from pathlib import Path
 import os
-import dj_database_url
+# import dj_database_url
 if os.path.exists('env.py'):
     import env
 
@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-6w@(xgdb8j*+ncr(t=w%&bpbm$9b%rw_8$chg4d_*61aggjqd3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-eu100.gitpod.io']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'profiles',
 ]
 
 MIDDLEWARE = [
