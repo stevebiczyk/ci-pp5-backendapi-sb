@@ -13,8 +13,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=200)
     ingredients = models.TextField()
     instructions = models.TextField()
-    image = models.ImageField(upload_to='recipes/', null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipes')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipe')
     cooking_time = models.IntegerField(null=True, blank=True)  # in minutes
     servings = models.IntegerField(null=True, blank=True)
     difficulty_level = models.CharField(choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True)

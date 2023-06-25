@@ -16,4 +16,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'bio', 'avatar', 'is_owner'
         ]
-        
