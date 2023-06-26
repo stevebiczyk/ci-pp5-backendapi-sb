@@ -10,14 +10,17 @@ class Recipe(models.Model):
     )
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=255)
     ingredients = models.TextField()
     instructions = models.TextField()
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipe')
     cooking_time = models.IntegerField(null=True, blank=True)  # in minutes
-    servings = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
     difficulty_level = models.CharField(choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True)
+    # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipes')
+    # likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
+    # dislikes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
 
     class Meta:
         ordering = ['-created_at']
