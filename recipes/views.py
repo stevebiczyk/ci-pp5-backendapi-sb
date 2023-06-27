@@ -41,7 +41,7 @@ class RecipeDetail(APIView):
     def get_object(self, pk):
         try:
             recipe = Recipe.objects.get(pk=pk)
-            self.check_object_permissions(self.request, profile)
+            self.check_object_permissions(self.request, recipe)
             return recipe
         except Recipe.DoesNotExist:
             raise Http404
