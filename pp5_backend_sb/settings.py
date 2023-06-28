@@ -36,7 +36,8 @@ SECRET_KEY = 'django-insecure-6w@(xgdb8j*+ncr(t=w%&bpbm$9b%rw_8$chg4d_*61aggjqd3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-eu100.gitpod.io']
+# ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-eu101.gitpod.io']
 
 
 # Application definition
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'recipes',
     'comments',
+    'ratings',
 ]
 
 MIDDLEWARE = [
