@@ -18,9 +18,8 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField(null=True, blank=True)  # in minutes
     image = models.ImageField(upload_to='images/', default='../girl_climbing_gxt5ti', blank=True)
     difficulty_level = models.CharField(choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True)
-    # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipes')
-    # likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
-    # dislikes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
+    # categories = models.ManyToManyField(Category)
+    # ratings = models.models.PositiveIntegerField()
 
     class Meta:
         ordering = ['-created_at']

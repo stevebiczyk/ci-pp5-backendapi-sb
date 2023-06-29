@@ -17,15 +17,19 @@ from recipes.models import Recipe
 
 
 class Rating(models.Model):
+    #     RATING_CHOICES = (
+    #     (1, '1 Star'),
+    #     (2, '2 Stars'),
+    #     (3, '3 Stars'),
+    #     (4, '4 Stars'),
+    #     (5, '5 Stars'),
+    # )
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='ratings'
         )
     stars = models.IntegerField(default=0, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    # def __str__(self):
-    #     return f'{self.user.username} - {self.recipe.title}'
 
     class Meta:
         ordering = ['-created_at']
