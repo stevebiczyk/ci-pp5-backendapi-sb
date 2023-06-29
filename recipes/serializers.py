@@ -9,7 +9,9 @@ class RecipeSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.id')
     profile_image = serializers.ReadOnlyField(source='owner.avatar.url')
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.avatar.url')
+    profile_image = serializers.ReadOnlyField(
+        source='owner.profile.avatar.url'
+        )
     rating_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
