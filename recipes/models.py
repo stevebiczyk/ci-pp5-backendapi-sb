@@ -16,8 +16,12 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     instructions = models.TextField()
     cooking_time = models.IntegerField(null=True, blank=True)  # in minutes
-    image = models.ImageField(upload_to='images/', default='../girl_climbing_gxt5ti', blank=True)
-    difficulty_level = models.CharField(choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True)
+    image = models.ImageField(
+        upload_to='images/', default='../girl_climbing_gxt5ti', blank=True
+        )
+    difficulty_level = models.CharField(
+        choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True
+        )
     # categories = models.ManyToManyField(Category)
     # ratings = models.models.PositiveIntegerField()
 
