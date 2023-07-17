@@ -7,7 +7,6 @@ class CurrentUserSerializer(UserDetailsSerializer):
     profile_image = serializers.ReadOnlyField(
         source='profile.avatar.url'
         )
-    # profile_image = serializers.ReadOnlyField(source='profile.image.url')
 
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + (

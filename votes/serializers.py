@@ -1,18 +1,18 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from ratings.models import Rating
+from votes.models import Vote
 
 
-class RatingSerializer(serializers.ModelSerializer):
+class VoteSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Rating model
+    Serializer for the Vote model
     The create method handles the unique constraint on 'owner' and 'post'
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Rating
-        fields = ['id', 'recipe', 'created_at', 'owner', 'stars']
+        model = Vote
+        fields = ['id', 'recipe', 'created_at', 'owner', 'vote_type']
 
     def create(self, validated_data):
         try:

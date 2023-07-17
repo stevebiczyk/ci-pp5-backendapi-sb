@@ -3,32 +3,24 @@ from django.contrib.auth.models import User
 from recipes.models import Recipe
 
 
-# class Like(models.Model):
-#     """
-#     Like model, related to 'owner' and 'post'.
-#     'owner' is a User instance and 'post' is a Post instance.
-#     'unique_together' makes sure a user can't like the same post twice.
-#     """
-#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-#     post = models.ForeignKey(
-#         Post, related_name='likes', on_delete=models.CASCADE
-#     )
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Rating(models.Model):
-    #     RATING_CHOICES = (
+class Vote(models.Model):
+    CHOICES = (
+        ('upvote', 'Upvote'),
+        ('downvote', 'DOwnvote'),
+    )
     #     (1, '1 Star'),
     #     (2, '2 Stars'),
     #     (3, '3 Stars'),
     #     (4, '4 Stars'),
     #     (5, '5 Stars'),
     # )
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='ratings'
         )
-    stars = models.IntegerField(default=0, null=True, blank=True)
+    rating_type = models.CharField(choices=CHOICES, max_length=8)
+    # rating = models.IntegerField(choices=RATING_CHOICES, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

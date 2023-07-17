@@ -99,7 +99,7 @@ INSTALLED_APPS = [
     'profiles',
     'recipes',
     'comments',
-    'ratings',
+    'votes',
     'followers',
     'categories',
 ]

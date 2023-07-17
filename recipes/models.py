@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Recipe(models.Model):
     DIFFICULTY_LEVELS = (
         ('Easy', 'Easy'),
-        ('Intermediate', 'Intermediate'),
+        ('Medium', 'Medium'),
         ('Hard', 'Hard'),
     )
 
@@ -23,7 +23,6 @@ class Recipe(models.Model):
         choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True
         )
     # categories = models.ManyToManyField(Category)
-    # ratings = models.models.PositiveIntegerField()
 
     class Meta:
         ordering = ['-created_at']

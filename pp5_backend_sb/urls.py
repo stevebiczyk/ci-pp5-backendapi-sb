@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('recipes.urls')),
     path('', include('comments.urls')),
-    path('', include('ratings.urls')),
+    path('', include('votes.urls')),
     path('', include('followers.urls')),
     path('', include('categories.urls')),
 ]
