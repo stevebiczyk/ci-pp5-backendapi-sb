@@ -49,6 +49,6 @@ class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Recipe.objects.annotate(
-        ratings_count=Count('ratings', distinct=True),
+        votes_count=Count('votes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')

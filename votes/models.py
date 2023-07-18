@@ -19,7 +19,7 @@ class Vote(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='votes'
         )
-    vote_type = models.CharField(choices=CHOICES, max_length=8)
+    vote_type = models.CharField(choices=CHOICES, max_length=8, null=True)
     # rating = models.IntegerField(choices=RATING_CHOICES, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
