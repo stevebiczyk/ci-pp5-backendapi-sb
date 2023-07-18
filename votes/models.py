@@ -6,7 +6,7 @@ from recipes.models import Recipe
 class Vote(models.Model):
     CHOICES = (
         ('upvote', 'Upvote'),
-        ('downvote', 'DOwnvote'),
+        ('downvote', 'Downvote'),
     )
     #     (1, '1 Star'),
     #     (2, '2 Stars'),
@@ -17,9 +17,9 @@ class Vote(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, related_name='ratings'
+        Recipe, on_delete=models.CASCADE, related_name='votes'
         )
-    rating_type = models.CharField(choices=CHOICES, max_length=8)
+    vote_type = models.CharField(choices=CHOICES, max_length=8)
     # rating = models.IntegerField(choices=RATING_CHOICES, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -28,4 +28,4 @@ class Vote(models.Model):
         unique_together = ['owner', 'recipe']
 
     def __str__(self):
-        return f'{self.owner} {self.recipe.title}'
+        return f'{self.owner} {self.recipe}'

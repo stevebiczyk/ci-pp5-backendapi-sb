@@ -47,5 +47,5 @@ class RecipeSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_avatar', 'created_at', 'updated_at',
             'title', 'ingredients', 'instructions', 'image',
-            'cooking_time', 'difficulty_level', 'vote_id',
+            'cooking_time', 'difficulty_level', 'vote_id', 'vote_type',
             ]

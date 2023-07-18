@@ -14,7 +14,7 @@ class RecipeList(generics.ListCreateAPIView):
     serializer_class = RecipeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Recipe.objects.annotate(
-        ratings_count=Count('ratings', distinct=True),
+        votes_count=Count('votes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
@@ -24,7 +24,7 @@ class RecipeList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__followed__owner__profile',
-        'ratings__owner__profile',
+        'votes__owner__profile',
         'owner__profile',
     ]
     search_fields = [
@@ -33,9 +33,9 @@ class RecipeList(generics.ListCreateAPIView):
         'difficulty_level',
     ]
     ordering_fields = [
-        'ratings_count',
+        'votes_count',
         'comments_count',
-        'ratings__created_at',
+        'votes__created_at',
     ]
 
     def perform_create(self, serializer):

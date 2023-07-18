@@ -6,7 +6,6 @@ from votes.models import Vote
 class VoteSerializer(serializers.ModelSerializer):
     """
     Serializer for the Vote model
-    The create method handles the unique constraint on 'owner' and 'post'
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
