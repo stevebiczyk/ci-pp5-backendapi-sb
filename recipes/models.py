@@ -9,6 +9,13 @@ class Recipe(models.Model):
         ('Hard', 'Hard'),
     )
 
+    CATEGORY_CHOICES = (
+        ('Vegetarian', 'Vegetarian'),
+        ('Vegan', 'Vegan'),
+        ('Dairy-free', 'Dairy-free'),
+        # Add more choices as needed
+    )
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -22,7 +29,9 @@ class Recipe(models.Model):
     difficulty_level = models.CharField(
         choices=DIFFICULTY_LEVELS, max_length=20, null=True, blank=True
         )
-    # categories = models.ManyToManyField(Category)
+    category = models.CharField(
+        choices=CATEGORY_CHOICES, max_length=20, null=True, blank=True
+        )
 
     class Meta:
         ordering = ['-created_at']
