@@ -1,108 +1,391 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **RecipeShare (Backend API)**
 
-Welcome stevebiczyk,
+# [Table of Contents](#table-of-contents)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- [**Project Overview**](#project-overview)
+  - [Objective](#objective)
+  - [Links to Deployed Project](#links-to-deployed-project)
+  - [Project Structure](#project-structure)
+  - [User Stories](#user-stories)
+- [Database Designs](#database-designs)
+  - [Models](#models)
+- [Features](#features)
+  - [Homepage](#homepage)
+  - [Profile Data](#profile-data)
+  - [Recipes Data](#posts-data)
+  - [Comments Data](#comments-data)
+  - [Followers Data](#followers-data)
+  - [Votes Data](#reviews-data)
+  - [Categories Data](#contact-data)
+- [Agile Development](#agile-development)
+  - [GitHub Project Board](#github-project-board)
+- [Testing](#testing)
+- [Technologies Used](#technologies-used)
+  - [Languages](#languages)
+  - [Frameworks & Libraries](#frameworks-libraries)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+# **Project Overview**
 
-## Gitpod Reminders
+## Objective
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+The objective of the RecipeShare Back-end API is to serve as the foundation for a community-driven interactive recipe-sharing platform. The Django Rest Framework (DRF) API is designed to facilitate seamless communication between the front-end web application and the database, enabling users to create, retrieve, update, and delete recipes, profiles, comments and votes as well as perform other essential actions within the platform.
 
-`python3 -m http.server`
+## Links to Deployed Project
 
-A blue button should appear to click: _Make Public_,
+  - The backend  of this project is deployed on Heroku and can be found at: [RecipeShare API](https://ci-pp5-backendapi-sb-1f7f0e4a782e.herokuapp.com/)
+  - The GitHub repository for the frontend front end of the project can be found at: [RecipeShare Front End Repository](https://github.com/stevebiczyk/pp5-recipe-share-sb)
+  - The front end of this project is also deployed on Heroku and can be found at: [RecipeShare Web App]( https://recipe-share-sb-38760b27e610.herokuapp.com/)
 
-Another blue button should appear to click: _Open Browser_.
+## Project Structure
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The RecipeShare DRF API was losely based on the DRF API part of the Moments walkthrough [drf-api](https://github.com/Code-Institute-Solutions/drf-api) that was completed as part of the Advanced Front End section of the Code Institute's Diploma in Fullstack Development program.
+As per the requirements of the final project, two different models were created, the Recipes and the Votes models.
 
-A blue button should appear to click: _Make Public_,
+[Back to top](<#table-of-contents>)
 
-Another blue button should appear to click: _Open Browser_.
+# User Stories
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Developer User Stories
 
-To log into the Heroku toolbelt CLI:
+- As the developer, I will create a new repository on GitHub so that I can develop the API separately from the front end.
+- As a developer, I will install the necessary packages and framework dependencies to ensure that the API is fully functional both during development and as the deployed project.
+- As the developer, I will create a superuser account so that I can develop and test features from the backend.
+- As the developer, I will create an gitignore file so that the sensitive information is kept hidden from the public.
+- As the developer, I will test all the features of the API so I can be sure that the deployed project will work with the front end.
+- As the developer, I will deploy the finished project to Heroku so that it's available for the public to access and use.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Profiles User Stories
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- As the developer, I will create a Profiles app so that users can create and edit their profiles and view others'.
+- As the developer, I will create a Register/Login feature so that users can create an account and log into their existing account.
+- As the developer/superuser, I want to be able to access all the user profiles so that i can view and edit their information.
+- As the developer, I will create a Logout feature so that users can log out of their account when they finish using the site.
 
-------
+## Recipes User Stories
 
-## Release History
+- As the developer, I will create a Recipes app so that registered/logged-in users can post, view and interact with recipes on the platform.
+- As a developer/superuser, I can view a list of all recipes so that I can see all recipes currently in the backend API.
+- As a developer/superuser, I can look up a specific recipe by ID so that I can view the recipe details of a singular recipe.
+- As a developer/superuser, I can edit a specific recipe by ID so that information remains updated in the API pertaining to that recipe.
+- As a developer/superuser, I can delete a specific recipe so that no erroneous information will appear on the site (or in the backend API) if the recipe details are incorrect or irrelevant.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Votes User Stories
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- As the developer, I will create a Votes app so that registered/logged-in users can upvote or downvote recipes and view other users' votes.
+- As a developer/user, I can create a vote so that other logged-in users can see what I thought about a recipe.
+- As a developer/user, I can view the total number of up and down votes for each recipe so that I can see what other users thought of that recipe.
+- As a developer/superuser I can edit other users' votes so that I can change or remove votes if required.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Comments User Stories
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- As the developer, I will create a Comments app so that registered/logged-in users can add further information to recipes and view other users' comments.
+- As the developer/superuser, I can access all comments so that I can edit or delete a certain comment from the backend if it's inappropriate or erroneous.
+- As a logged in user, I want to be able to create a comment, edit it and delete it and view other users' comments.
+- As a logged in user, I want to be able to see the number of comments for each recipe to see which is the most commented recipe.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Categories User Stories
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- As the developer, I will create a Categories feature so that registered/logged-in users can access recipes that are grouped according to their requirements.
+- As the developer/user I want to be able to view the categories and select one or more of them so that I can view recipes that are relevant to my needs.
+- As the developer/user I want to be able to add categories and assign them to registered users'/my recipes so that other users can access recipes that are relevant to their interested/ dietary needs.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Followers User Stories
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+- As the developer, I will create a Followers app so that registered/logged-in users can follow other users whose recipes they find relevant to their interests and needs.
+- As the developer/superuser I want to be able to see the followers of other users so that I can see which are the most popular profiles.
+- As the developer/logged in user I want to be able to follow and unfollow other users' profiles so that I can keep track of users who have interesting recipes or comments.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Testing User Stories
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- As the developer, I will thoroughly test my application so that it's free of bugs as much as possible.
+- As the developer, I will document the tests I carried out and the bugs I found so that users and other developers are aware of the issues I discovered and addressed.
+- As the developer, I will document any bugs I found but haven't been able to fix so that users and other developers are aware of them.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Documentation User Stories
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- As the developer, I will thoroughly document the development of the application so that other developers can follow the development pocess and more easily contribute if required.
+- As the developer, I will create a Readme file for the application so that the documentation is clear, structured and accesible for other developers.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+# Database Designs
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Models
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+For the purposes of this project, I created a database losely based on the DRF API of the Moments walktrough project.
+The database contains the following models:
 
-------
+ - Profiles (Shows user information for the registered users)
+ - Recipes (Shows all the necessary information for the recipes for other users)
+ - Votes (Users can vote on recipes and change or delete their vote)
+ - Comments (Users can write comments to add relevant information to recipes)
+ - Categories (Users can create categories and use them to select groups of recipes)
+ - Followers (Allows users to follow and unfollow other profiles)
 
-## FAQ about the uptime script
+The Recipes and Categories models arecompletely separate from the models used in the Moments walkthrough while the Votes model is losely based on the original Likes model.
 
-**Why have you added this script?**
+[Back to top](<#table-of-contents>)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+# Features
 
-**How will this affect me?**
+## Homepage
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+When you open the Root Route, you're taken to the homepage, where you'll see a welcome message for the RecipeShare API.  
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+![API Homepage](images/homepage.png)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+## Profile Data
 
-**So….?**
+All the profiles created for the RecipeShare are listed in the Profiles section.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![Profile List](images/profiles.png)
 
-**Can I opt out?**
+The profiles model includes the following fields:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+- owner
+- created_at
+- updated_at
+- name
+- bio
+- avatar
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+The following fields were added through the profiles serializer:
 
-**Anything more?**
+- is_owner
+- following_id
+- recipes_count
+- followers_count
+- following_count
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+For the admin user, full CRUD functionality is available for all profiles. Other logged in users can access, edit and delete their own profile. This is done via a form that's part of the Django Rest framework.
 
----
+![Profile Edit Form](images/profile-edit.png)
 
-Happy coding!
+## Recipes Data
+
+On the Recipes List page, the user can view all recipes created in the application.
+
+![Recipes List](images/recipes.png)
+
+The fields listed below are included in the recipes model:
+
+- owner
+- created_at
+- updated_at
+- title
+- ingredients
+- instructions
+- cooking_time
+- image
+
+The following fields were added through the recipes serializer:
+
+- is_owner
+- profile_id
+- profile_image
+- like_id
+- review_id
+- likes_count
+
+A logged-in superuser can create a recipe from the backend via a Django form. This recipe will be visible for logged in users on the front end.
+The supeuser can also edit or delete recipes if required.
+
+![Create a recipe](images/create-recipe.png)
+
+## Comments Data
+
+The Comments section contains a list of all the comments and related content stored in the API.
+
+![Comments List](images/comments.png)
+
+A logged in superuser can fill out a form to create a comment. This will be saved to the API and will also be accessible from the frontend.
+
+![Create a Comment](images/create-comment.png)
+
+The superuser can also editor delete a comment from the API.
+
+![Edit Comment Form](images/edit-comment.png)
+
+## Followers Data
+
+On the Followers page, all followers of profiles are shown.
+
+![Follower List](images/followers.png)
+
+After logging in, the superuser can fill out a form with the 'owner' and 'followed' fields to have a user follow another. 
+![Create a Follower Post](images/create-followers.png)
+
+The same superuser can edit the form to change the 'owner' and 'followed' fields. the owner / follower combination can only be used one time, otherwise an error message is shown alerting that the owner is already following the other user.
+
+Clicking the delete button deletes this owner-follower combination from the database.
+
+![Edit Followers](images/edit-followers.png)
+
+## Votes Data
+
+Users can see a list of all votes in the API. 
+
+![Votes List](images/reviews.png)
+
+Once logged in, the superuser can create a Vote for a Recipe. Only one Vote per user allowed for each Recipe. Two types of Votes are availableto the user, an upvote or a downvote, depending on their experience with the Recipe. They can also retract and change their Vote if they want to do so.
+
+# Agile Development
+
+## GitHub Project Board
+
+I used a Github project board for creating User Stories and keeping track of them during the development of this API. I used Agile principles throughout the development.
+<!-- - Epics, Must haves, Nice to haves, etc. -->
+
+![GitHub Project Board](images/project-board.png)
+
+
+[Back to top](<#table-of-contents>)
+
+# Testing
+
+- Add detailed description of the testing process
+
+# Technologies Used
+
+## Languages
+
+* [Python](https://www.python.org/) - The programming language behind the DRF framework.
+
+## Frameworks, Libraries & Software
+
+- [Django Rest Framework](https://www.django-rest-framework.org/) - Python framework used for building Web APIs in Django, used to interact with frontend applications.
+- [Git](https://www.git-scm.com/) - Version control system, used for keeping track of the changes made to the file system during the development process.
+- [GitHub](https://github.com/) - Github is cloud-based service for version control using Git. It is used to host the repository and the project board for this project.
+- [GitPod](https://www.gitpod.io) - Cloud based IDE, used for creating and editing the files in the repository and also for pushing the changes to GitHub.
+- [Heroku](https://en.wikipedia.org/wiki/Heroku) - Hosting platform used for making this project accessible on the web.
+- [Cloudinary](https://cloudinary.com/) - An image hosting service used for storing the image filesfor this project.
+- [Pillow](https://pypi.org/project/Pillow/) - Pillow is the Python Imaging Library that was used for this project. It adds image processing capabilities to the Python interpreter.
+- [Django Rest Auth](https://django-rest-auth.readthedocs.io/en/latest/#) - Used in this project to provide REST API endpoints for user authentication and registration. 
+- [Gunicorn](https://pypi.org/project/gunicorn/) - Gunicorn ‘Green Unicorn’ is a Python WSGI Application Server used for this project.
+- [Psycopg2](https://pypi.org/project/psycopg2/) - Psycopg is a popular PostgreSQL database adapter for the Python programming language.
+- [PEP8 Validation](https://pypi.org/project/pep8/) - A validation tool to check Python code against various style conventions in PEP 8.
+
+[Back to top](<#table-of-contents>)
+
+# Deployment
+
+The project was deployed to [Heroku](https://www.heroku.com). The deployment process is detailed below:
+
+1. First, create a GitHub repository from the [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template). 
+
+2. Click 'Use this template' and fill in the details for the new repository. When that's done, click 'Create Repository From Template'.
+
+3. Once the repository is created, click the green 'Gitpod' button to open the Gitpod workspace.
+
+4. Install necessary libraries like Django, Gunicorn, Psychopg2 and Cloudinary using these commands in the Gitpod terminal:
+
+* ```pip3 install 'django<4'```
+* ```pip3 install 'django<4' gunicorn```
+* ```pip3 install 'dj_database_url psycopg2```
+* ```pip3 install 'dj3-cloudinary-storage```
+
+5. After completing these installations, create a requirements.txt file using the command below, which will create and add required libraries to the file:
+
+* ```pip3 freeze --local > requirements.txt```
+
+
+6. Now, create the actual project using:
+
+* ```django-admin startproject project-name ``` 
+
+7. After the project has been created, you can create each app. The current project includes: Profiles, Recipes, Comments, Votes, Categories and Followers.
+
+* ```python3 manage.py startapp appname```
+
+8. Add these apps to the settings.py file in the INSTALLED_APPS list.
+
+8. Migrate these new developments and run the server to ensure everything is working properly in the local environment. It's a good idea to start with a 'dry-run' migration to check for any typos or spelling errors. The command for this is:
+* ```python3 manage.py makemigrations --dry-run``` 
+
+  Then you can prepare the migrations
+* ```python3 manage.py makemigrations```
+
+  and migrate the changes:
+* ```python3 manage.py migrate```
+
+  Now run the server by entering the command below. Click the 'open browser' button when it pops up to see the page in your local browser.
+* ```python manage.py runserver```
+
+9. Once the above steps are completed, you can create the Heroku app and link the GitHub repository.
+
+    Sign into your [Heroku account](https://www.heroku.com/), and click on 'New' at the top right-hand corner to create a new app.
+
+10. Choose a unique app name, fill out the region and click on the 'Create app' button at the bottom.
+
+11. Next, connect an external PostgreSQL database to the app, using [ElephantSQL](https://customer.elephantsql.com/login). When you've logged in and are on the ElephantSQL dashboard, click 'Create New Instance' to create a new database. Complete the following:
+* Name the database
+* Select 'Tiny Turtle Free Plan'
+* Select data center near you then click 'Create Instance'.
+* Return to the ElephantSQL Dashboard and click your newly created database instance. 
+* Copy the Database URL and return to Heroku.
+
+12. In the Heroku app settings tab, click 'Reveal Config Vars'. Create a variable called DATABASE_URL and paste the URL you just copied from ElephantSQL. This will connect the database to the app. 
+
+13. Now, in the Gitpod environment, create an env.py file. In this file, add the following code to import the os library, set the environment variables, and keep a secret key, respectively:
+
+* ```import os```
+* ```os.environ["DATABASE_URL"]```
+* ```os.environ["SECRET_KEY"]```
+
+14. Return to the Heroku Config Vars settings and create a variable called SECRET_KEY. Copy and paste the secret key from the env.py file into this variable. 
+
+    REMEMBER: add the env.py file to the .gitignore file so none of this information is committed and pushed to GitHub and therefore, publicly accessible.
+
+15. Now, to connect to the environment and settings.py file, add the following code to the settings.py file:
+
+* ```import os```
+* ```import dj_database_url```
+* ```if os.path.isfile("env.py"):```
+* ```import env```
+
+16. Then, in the same file, remove the unsafe secret key and replace it with:
+```SECRET_KEY = os.environ.get('SECRET_KEY')```
+
+17. Next, set up [Cloudinary](https://cloudinary.com/users/login) to be able to store static files (images, etc). Create or login to your account and copy the API variable from the Cloudinary dashboard.
+
+18. Add the Cloudinary URL to the gitpod environment in the env.py file, making sure it's correct:
+
+* ```os.environ["CLOUDINARY_URL"] = "cloudinary://************************"```
+
+19. In the Heroku app, add the Cloudinary URL to the Config Vars, along with the DISABLE_COLLECTSTATIC variable (equal to 1) to be able to properly deploy.
+
+20. In the gitpod environment, in the settings.py file, add the installed Cloudinary Libraries to the INSTALLED_APPS list. 
+
+    REMEMBER to put them in this order: 
+
+    * cloudinary_storage
+    * django.contrib.staticfiles
+    * cloudinary
+
+21. Add the Heroku app and localhost to the ALLOWED_HOSTS list in the settings.py file.
+
+22. Now, create the Procfile directory in the Gitpod environment. Add the following line:
+
+* ```web: gunicorn proj_name.wsgi?```
+
+23. Save the files, commit and push these changes to GitHub. 
+
+24. Scroll to the top of the settings page in Heroku and click the 'Deploy' tab. For deployment method, select 'Github'. Search for the repository name you want to deploy and then click connect.
+
+    The deployed Heroku API can be found [here](https://ci-pp5-backendapi-sb-1f7f0e4a782e.herokuapp.com/).
+    The backend GitHub repository can be found [here](https://stevebiczyk-cipp5backen-u3gmtuyoysq.ws-eu102.gitpod.io/).
+
+[Back to top](<#table-of-contents>)
+
+
+# Credits
+
+This application and website are completely fictional and for use only from a learning standpoint. The site was created for Portfolio Project 5 (Advanced Front End) - Diploma in Full Stack Software Development through [Code Institute](https://www.codeinstitute.net).
+
+I'd like to say thank you to:
+
+- The Code Institute Slack Community and the tutors for their help with the issues I encountered while working on the course material and my projects.
+
+- My mentor, Dick Vlaanderen for his mentoring and guidance with my numerous project and industry related queries.
+
+[Back to top](<#table-of-contents>)

@@ -65,7 +65,7 @@ DEBUG = 'DEV' in os.environ
 
 # ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-eu100.gitpod.io']
 # ALLOWED_HOSTS = ['8000-stevebiczyk-cipp5backen-4go3zwdljg4.ws-us101.gitpod.io']
-ALLOWED_HOSTS = ['localhost', 'ci-pp5-backendapi-sb-1f7f0e4a782e.herokuapp.com', '8000-stevebiczyk-cipp5backen-u3gmtuyoysq.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ['localhost', 'ci-pp5-backendapi-sb-1f7f0e4a782e.herokuapp.com', '8000-stevebiczyk-cipp5backen-u3gmtuyoysq.ws-eu102.gitpod.io']
 # ALLOWED_HOSTS = [
 # #    os.environ.get('ALLOWED_HOST'),
 # #    'localhost',
@@ -101,7 +101,6 @@ INSTALLED_APPS = [
     'comments',
     'votes',
     'followers',
-    'categories',
 ]
 SITE_ID = 1
 MIDDLEWARE = [

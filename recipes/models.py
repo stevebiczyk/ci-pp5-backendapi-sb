@@ -13,7 +13,10 @@ class Recipe(models.Model):
         ('Vegetarian', 'Vegetarian'),
         ('Vegan', 'Vegan'),
         ('Dairy-free', 'Dairy-free'),
-        # Add more choices as needed
+        ('Gluten-free', 'Gluten-free'),
+        ('Healthy Meals', 'Healthy Meals'),
+        ('Quick and Easy', 'Quick and Easy'),
+        # Add more choices!
     )
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
